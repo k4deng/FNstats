@@ -1,3 +1,6 @@
+//.env file
+require('dotenv').config()
+
 // Config
 const config = require("./config.js");
 
