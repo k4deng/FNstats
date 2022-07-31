@@ -4,13 +4,7 @@
 <head>
     <%- include("../../includes/head") %>
 
-    <title><%= site.name %> - <%= stats.username %></title>
-    <meta property="og:title" content="<%= site.name %> - <%= stats.username %>'s Stats">
-
-    <meta name="description" content="<%= site.desc %>">
-    <meta property="og:description" content="<%= site.desc %>">
-
-    <meta property="og:url" content="<%= site.url %>/user/<%= stats.username %>">
+    <title><%= site.name %></title>
 </head>
 
 <body id="page-top">
@@ -37,7 +31,7 @@
 
                     <!-- Error Text -->
                     <div class="text-center">
-                        <p class="lead text-gray-800 mb-5"><%= stats %></p>
+                        <p class="lead text-gray-800 my-3"><%= stats %></p>
                         <a href="/">&larr; Back to Home</a>
                     </div>
 

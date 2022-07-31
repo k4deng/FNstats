@@ -38,10 +38,46 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"><%= stats.username %>'s Stats</h1>
 
+                    <!-- Platform Select -->
+
+
+                    <!--TODO: Make this only show played platforms -->
+
+
+                    <div class="text-xs text-gray-800 text-uppercase mb-1">Platform</div>
+                    <div class="mb-4 btn-group">
+                        <a href="<%= site.url %>/user/<%= stats.username %>" class="btn btn-primary <%= stats.stats.platform == 'all' ? 'disabled' : '' %>">
+                            <span title="All platforms combined">
+                              All
+                            </span>
+                        </a>
+                        <% if (stats.platforms.includes("kbm")) { %>
+                        <a href="<%= site.url %>/user/<%= stats.username %>?platform=kbm" class="btn btn-primary <%= stats.stats.platform == 'kbm' ? 'disabled' : '' %>">
+                            <span title="Keyboard & Mouse">
+                              <i class="fas fa-keyboard"></i>
+                            </span>
+                        </a>
+                        <% } %>
+                        <% if (stats.platforms.includes("gamepad")) { %>
+                        <a href="<%= site.url %>/user/<%= stats.username %>?platform=gamepad" class="btn btn-primary <%= stats.stats.platform == 'gamepad' ? 'disabled' : '' %>">
+                            <span title="Gamepad">
+                              <i class="fas fa-gamepad"></i>
+                            </span>
+                        </a>
+                        <% } %>
+                        <% if (stats.platforms.includes("touch")) { %>
+                        <a href="<%= site.url %>/user/<%= stats.username %>?platform=touch" class="btn btn-primary <%= stats.stats.platform == 'touch' ? 'disabled' : '' %>">
+                           <span title="Touch">
+                              <i class="fas fa-hand-pointer"></i>
+                            </span>
+                        </a>
+                        <% } %>
+                    </div>
+
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Total Matches -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
@@ -59,13 +95,13 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Time Played -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                                 Time Played</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><%= moment.duration(stats.stats.overall.minutesPlayed, 'minutes').format(" D[D], H[H], m[M]")  %></div>
                                         </div>
@@ -77,13 +113,13 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Wins -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Wins</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.wins %></div>
                                         </div>
@@ -95,13 +131,13 @@
                             </div>
                         </div>
 
-                        <!-- Pending Requests Card Example -->
+                        <!-- Win Rate -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Win Rate</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.winRate %>%</div>
                                         </div>
@@ -117,7 +153,7 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Battle Pass Level -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -148,31 +184,31 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Kills -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Kills</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.kills %></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-sword fa-2x text-gray-300"></i>
+                                            <i class="fas fa-person-falling-burst fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Deaths -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                 Deaths</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.deaths %></div>
                                         </div>
@@ -184,7 +220,7 @@
                             </div>
                         </div>
 
-                        <!-- Pending Requests Card Example -->
+                        <!-- KD -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">

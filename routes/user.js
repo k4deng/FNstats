@@ -30,9 +30,16 @@ module.exports = function(client, dataDir, templateDir) {
             moment: moment
           });
 
+        // hasnt played that platform
+        if (stats.status == 11) res.render(
+          path.resolve(`${dataDir}${path.sep}views${path.sep}user${path.sep}error.ejs`), {
+            site: client,
+            stats: stats.result
+          });
+
         // private
         if (stats.status == 2) res.render(
-          path.resolve(`${dataDir}${path.sep}views${path.sep}user${path.sep}private.ejs`), {
+          path.resolve(`${dataDir}${path.sep}views${path.sep}user${path.sep}error.ejs`), {
             site: client,
             stats: stats.result
           });

@@ -30,19 +30,38 @@ async function getStats(username, platform = "all") {
         else if (platform === "kbm") stats = res.data.stats.keyboardMouse
         else if (platform === "gamepad") stats = res.data.stats.gamepad
         else if (platform === "touch") stats = res.data.stats.touch
-      
-      result = {
-        status: 1,
-        result: {
-          username: res.data.account.name,
-          battlePass: res.data.battlePass,
-          stats: stats
-        }
-      };
+
+      let platforms = [];
+      if (res.data.stats.keyboardMouse) platforms.push("kbm");
+      if (res.data.stats.gamepad) platforms.push("gamepad");
+      if (res.data.stats.touch) platforms.push("touch");
+
+      if (!stats) {
+        result = {
+          status: 11,
+          result: `${username} hasn't played on that platform, please check a different platform.`
+        };
+      } else {
+        result = {
+          status: 1,
+          result: {
+            username: res.data.account.name,
+            battlePass: res.data.battlePass,
+            platforms: platforms,
+            stats: {
+              platform: platform,
+              ...stats
+            }
+          }
+        };
+      }
 
     // Account stats are private
     } else if (res.status == 403) {
-      result = { status: 2, result: res.error }
+      result = {
+        status: 2,
+        result: `${username}'s stats are privated.'`
+      }
 
     // account not found
     } else if (res.status == 404) {
