@@ -68,7 +68,7 @@ async function getStats(username, platform = "all") {
     } else if (res.status == 403) {
       result = {
         status: 2,
-        result: `${username}'s stats are privated.'`
+        result: `${username}'s stats are privated.`
       }
 
     // account not found
