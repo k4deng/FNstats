@@ -17,8 +17,16 @@ const Fortnite = new FortniteAPI(fnapiconfig);
 async function getStats(username, platform = "all") {
 
   let result;
+  let account;
+
+  for (const acct of ["epic", "psn", "xbl"]) {
+    await Fortnite.BRStats({ name: username, accountType: acct })
+      .then(res => {
+        if (res.status == 200) account = acct;
+      })
+  }
   
-  await Fortnite.BRStats({ name: username })
+  await Fortnite.BRStats({ name: username, accountType: account ?? "epic" })
   .then(res => {
 
     // Success

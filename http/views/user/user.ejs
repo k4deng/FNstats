@@ -46,27 +46,27 @@
 
                     <div class="text-xs text-gray-800 text-uppercase mb-1">Platform</div>
                     <div class="mb-4 btn-group">
-                        <a href="<%= site.url %>/user/<%= stats.username %>" class="btn btn-primary <%= stats.stats.platform == 'all' ? 'disabled' : '' %>">
+                        <a href="<%= stats.username %>" class="btn btn-primary <%= stats.stats.platform == 'all' ? 'disabled' : '' %>">
                             <span title="All platforms combined">
                               All
                             </span>
                         </a>
                         <% if (stats.platforms.includes("kbm")) { %>
-                        <a href="<%= site.url %>/user/<%= stats.username %>?platform=kbm" class="btn btn-primary <%= stats.stats.platform == 'kbm' ? 'disabled' : '' %>">
+                        <a href="<%= stats.username %>?platform=kbm" class="btn btn-primary <%= stats.stats.platform == 'kbm' ? 'disabled' : '' %>">
                             <span title="Keyboard & Mouse">
                               <i class="fas fa-keyboard"></i>
                             </span>
                         </a>
                         <% } %>
                         <% if (stats.platforms.includes("gamepad")) { %>
-                        <a href="<%= site.url %>/user/<%= stats.username %>?platform=gamepad" class="btn btn-primary <%= stats.stats.platform == 'gamepad' ? 'disabled' : '' %>">
+                        <a href="<%= stats.username %>?platform=gamepad" class="btn btn-primary <%= stats.stats.platform == 'gamepad' ? 'disabled' : '' %>">
                             <span title="Gamepad">
                               <i class="fas fa-gamepad"></i>
                             </span>
                         </a>
                         <% } %>
                         <% if (stats.platforms.includes("touch")) { %>
-                        <a href="<%= site.url %>/user/<%= stats.username %>?platform=touch" class="btn btn-primary <%= stats.stats.platform == 'touch' ? 'disabled' : '' %>">
+                        <a href="<%= stats.username %>?platform=touch" class="btn btn-primary <%= stats.stats.platform == 'touch' ? 'disabled' : '' %>">
                            <span title="Touch">
                               <i class="fas fa-hand-pointer"></i>
                             </span>

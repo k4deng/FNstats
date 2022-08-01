@@ -18,7 +18,7 @@ module.exports = function(client, dataDir, templateDir) {
   // search
   router.get("/search", (req, res) => {
     const user = (req.query.user).replace(/\+/g, ' ');
-    res.redirect(`${client.url}/user/${req.query.user}${req.query?.platform ? "?platform="+req.query.platform : ""}`)
+    res.redirect(`${client.url}/user/${encodeURIComponent(req.query.user)}${req.query?.platform ? "?platform="+req.query.platform : ""}`)
   });
 
   return router;

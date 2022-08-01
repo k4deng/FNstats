@@ -19,16 +19,19 @@ module.exports = function(client, dataDir, templateDir) {
 
   router.get("/:user", (req, res) => {
 
-    fnapi.getStats(req.params.user, req.query?.platform)
+    fnapi.getStats(req.params.user, req.query?.platform, req.query?.accounts)
       .then(function(stats) {
 
         // found stats
-        if (stats.status == 1) res.render(
-          path.resolve(`${dataDir}${path.sep}views${path.sep}user${path.sep}user.ejs`), {
-            site: client,
-            stats: stats.result,
-            moment: moment
-          });
+        if (stats.status == 1) {
+          if (req.params.user !== stats.result.username) res.redirect(`${encodeURIComponent(stats.result.username)}${req.query?.platform ? "?platform="+req.query.platform : ""}`)
+          else res.render(
+            path.resolve(`${dataDir}${path.sep}views${path.sep}user${path.sep}user.ejs`), {
+              site: client,
+              stats: stats.result,
+              moment: moment
+            });
+        }
 
         // hasnt played that platform
         if (stats.status == 11) res.render(
