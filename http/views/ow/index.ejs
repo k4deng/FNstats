@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../../includes/head") %>
+</head>
+
+<body id="page-top">
+
+    <style>
+        .sidebar .nav-item, .sidebar-heading, .sidebar-divider, .sidebar-brand, #sidebarToggle{
+            display: none !important;
+        }
+        .sidebar{
+            width: 0 !important;
+        }
+    </style>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include("../../includes/sidebar") %>
+        <!-- End of Sidebar -->        
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <%- include("../../includes/ow-topbar") %>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Error Text -->
+                    <div class="text-center">
+                        <p class="lead text-gray-800 my-3">Waiting for information...</p>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <%- include("../../includes/footer") %>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <%- include("../../includes/doc-end") %>
+
+</body>
+
+</html>

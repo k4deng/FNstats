@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../../includes/head") %>
+</head>
+
+<body id="page-top">
+
+    <style>
+        .sidebar .nav-item, .sidebar-heading, .sidebar-divider, .sidebar-brand, #sidebarToggle{
+            display: none !important;
+        }
+        .sidebar{
+            width: 0 !important;
+        }
+    </style>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include("../../includes/sidebar") %>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <%- include("../../includes/ow-topbar") %>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800"><%= stats.username %>'s Stats</h1>
+
+                    <!-- Platform Select -->
+
+
+                    <!--TODO: Make this only show played platforms -->
+
+
+                    <div class="text-xs text-gray-800 text-uppercase mb-1">Platform</div>
+                    <div class="mb-4 btn-group">
+                        <a href="<%= stats.username %>" class="btn btn-primary <%= stats.stats.platform == 'all' ? 'disabled' : '' %>">
+                            <span title="All platforms combined">
+                              All
+                            </span>
+                        </a>
+                        <% if (stats.platforms.includes("kbm")) { %>
+                        <a href="<%= stats.username %>?platform=kbm" class="btn btn-primary <%= stats.stats.platform == 'kbm' ? 'disabled' : '' %>">
+                            <span title="Keyboard & Mouse">
+                              <i class="fas fa-keyboard"></i>
+                            </span>
+                        </a>
+                        <% } %>
+                        <% if (stats.platforms.includes("gamepad")) { %>
+                        <a href="<%= stats.username %>?platform=gamepad" class="btn btn-primary <%= stats.stats.platform == 'gamepad' ? 'disabled' : '' %>">
+                            <span title="Gamepad">
+                              <i class="fas fa-gamepad"></i>
+                            </span>
+                        </a>
+                        <% } %>
+                        <% if (stats.platforms.includes("touch")) { %>
+                        <a href="<%= stats.username %>?platform=touch" class="btn btn-primary <%= stats.stats.platform == 'touch' ? 'disabled' : '' %>">
+                           <span title="Touch">
+                              <i class="fas fa-hand-pointer"></i>
+                            </span>
+                        </a>
+                        <% } %>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Total Matches -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Total Matches</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.matches %></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Time Played -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Time Played</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= moment.duration(stats.stats.overall.minutesPlayed, 'minutes').format(" D[D], H[H], m[M]")  %></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wins -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Wins</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.wins %></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-trophy fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Win Rate -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Win Rate</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.winRate %>%</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-medal fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Battle Pass Level -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Battle Pass Level
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= stats.battlePass.level %></div>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-3 mb-0">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                        style="width: <%= stats.battlePass.progress %>%" aria-valuenow="<%= stats.battlePass.progress %>" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-crown fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kills -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Kills</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.kills %></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-person-falling-burst fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Deaths -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                Deaths</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.deaths %></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-skull-crossbones fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KD -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                KD</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.kd %></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-skull fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Content Column -->
+                        <div class="col-12">
+
+                            <!-- Plain JSON -->
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Accordion -->
+                                <a href="#userJSON" class="d-block card-header py-3" data-toggle="collapse"
+                                    role="button" aria-expanded="false" aria-controls="userJSON">
+                                    <h6 class="m-0 font-weight-bold text-primary"><%= stats.username %>'s Stats (JSON Format):</h6>
+                                </a>
+                                <!-- Card Content - Collapse -->
+                                <div class="collapse" id="userJSON">
+                                    <div class="card-body">
+                                        <pre><code><%- JSON.stringify(stats, null, 2) %></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <%- include("../../includes/footer") %>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <%- include("../../includes/doc-end") %>
+
+</body>
+
+</html>

@@ -81,6 +81,7 @@ async function getStats(username, platform = "all") {
       
     } else {
       logger.error("There was an unknown error fetching stats!");
+      logger.error(res);
       result = { status: 5, result: res }
     }
     

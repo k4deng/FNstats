@@ -100,6 +100,10 @@ app.use("/", require("./routes/site")(client, dataDir, templateDir));
 // site.com/user/?
 app.use("/user/", require("./routes/user")(client, dataDir, templateDir));
 
+// site.com/ow/?
+// overwolf app pages
+app.use("/ow/", require("./routes/ow/site")(client, dataDir, templateDir));
+
 // 404 errors
 app.get("*", function(req, res) {
   res.status(404).render(path.resolve(`${templateDir}${path.sep}error.ejs`), {
