@@ -30,11 +30,14 @@
     <!-- Core plugin JavaScript-->
     <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <!-- SweetAlert2 -->
+    <script src="/vendor/sweetalert2/sweetalert2.min.js"></script>
+
     <!-- Custom scripts for all pages-->
     <script src="/js/sb-admin-2.min.js"></script>
 
-    <!-- Add active tag to the page nav -->
     <script>
+        // Add active tag to the page nav
         jQuery(document).ready(function($){
             // Get current path and find target link
             const path = window.location.pathname
@@ -51,22 +54,38 @@
             // Add active class to target link
             target.addClass('active');
         });
-    </script>
 
-    <!-- Handle the mode switching buttons -->
-    <script>
+        // Handle the mode switching buttons
+        // init sweetalert
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+
+        // change mode to killer
         document.getElementById('modeKiller').addEventListener('click', e => {
+            Toast.fire({
+                icon: 'success',
+                title: 'Changed stats mode to Killer.'
+            })
             changeStatsMode("killer")
         });
+        // change mode to killed
         document.getElementById('modeKilled').addEventListener('click', e => {
+            Toast.fire({
+                icon: 'success',
+                title: 'Changed stats mode to Killed.'
+            })
             changeStatsMode("killed")
         });
 
-        // tell ow to change the mode
+        // tell overwolf to change the mode
         function changeStatsMode(newMode){
-        window.parent.postMessage(
-            { mode: newMode }, 
-        "overwolf-extension://mbpaeeolbbceleoodhaepaccaagapppmhojbcmed"
-        ); 
+            window.parent.postMessage(
+                { mode: newMode }, 
+            "overwolf-extension://mbpaeeolbbceleoodhaepaccaagapppmhojbcmed"
+            ); 
         }
     </script>
