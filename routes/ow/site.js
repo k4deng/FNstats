@@ -35,12 +35,13 @@ module.exports = function(client, dataDir, templateDir) {
 
         // found stats
         if (stats.status == 1) {
-          if (req.params.user !== stats.result.username) res.redirect(`${encodeURIComponent(stats.result.username)}${req.query?.platform ? "?platform="+req.query.platform : ""}`)
+          if (req.params.user !== stats.result.username) res.redirect(`${encodeURIComponent(stats.result.username)}${req.query?.platform ? "?platform="+req.query.platform : ""}${req.query?.fromEvent ? "?fromEvent="+req.query.fromEvent : ""}`)
           else res.render(
             path.resolve(`${dataDir}${path.sep}views${path.sep}ow${path.sep}user.ejs`), {
               site: client,
               stats: stats.result,
-              moment: moment
+              moment: moment,
+              fromEvent: req.query?.fromEvent
             });
         }
 

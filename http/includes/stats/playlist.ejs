@@ -1,0 +1,154 @@
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary"><%= playlistName %></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center d-flex justify-content-center"> 
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 mb-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Matched Played
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.matches %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 mb-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Wins
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.wins %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 mb-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Win Rate
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.winRate %>%</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Kills
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.kills %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Deaths
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.deaths %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">K/D
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.kd %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 d-none d-lg-block d-xl-none p-2"></div>
+
+                                        <% if (playlistName == "Solo") { %>
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Top 10
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.top10 %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Top 25
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.top25 %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } else if (playlistName == "Duos") { %>
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Top 5
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.top5 %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Top 12
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.top12 %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } else if (playlistName == "Trios" || playlistName == "Squads") { %>
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Top 3
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.top3 %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Top 6
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= playlistStats.top6 %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Time Played
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= moment.duration(playlistStats.minutesPlayed, 'minutes').format(" D[D], H[H], m[M]")  %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 my-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Last Played
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= moment(playlistStats.lastModified).format('MM/DD/YYYY'); %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>

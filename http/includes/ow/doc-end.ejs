@@ -64,14 +64,15 @@
             timer: 3000
         });
 
-        // change mode to killer
-        document.getElementById('modeKiller').addEventListener('click', e => {
+        // change mode to all
+        document.getElementById('modeAll').addEventListener('click', e => {
             Toast.fire({
                 icon: 'success',
-                title: 'Changed stats mode to Killer.'
+                title: 'Changed stats mode to All.'
             })
-            changeStatsMode("killer")
+            changeStatsMode("all")
         });
+      
         // change mode to killed
         document.getElementById('modeKilled').addEventListener('click', e => {
             Toast.fire({
@@ -79,6 +80,15 @@
                 title: 'Changed stats mode to Killed.'
             })
             changeStatsMode("killed")
+        });
+
+        // change mode to killer
+        document.getElementById('modeKiller').addEventListener('click', e => {
+            Toast.fire({
+                icon: 'success',
+                title: 'Changed stats mode to Killer.'
+            })
+            changeStatsMode("killer")
         });
 
         // tell overwolf to change the mode
