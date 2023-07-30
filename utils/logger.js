@@ -1,7 +1,7 @@
 /*
 Logger class for easy and aesthetically pleasing console logging 
 */
-const config = require("./config.js");
+const config = require("../config.js");
 const chalk = require("chalk");
 const moment = require("moment");
 if (config.fileLogging == true) 

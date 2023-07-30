@@ -12,7 +12,7 @@ const express = require("express");
 const app = express();
 
 // For logging
-const logger = require("./logger.js");
+const logger = require("./utils/logger.js");
 const chalk = require("chalk");
 const morgan = require("morgan");
 // The output

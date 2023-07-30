@@ -2,7 +2,7 @@
 const config = require("../config.js");
 
 // API
-const fnapi = require("../fnapi.js");
+const fnapi = require("../utils/fnapi.js");
 
 // Native Node Imports
 const path = require("path");

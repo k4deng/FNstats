@@ -1,5 +1,5 @@
 // config
-const config = require("./config.js");
+const config = require("../config.js");
 
 // logger
 const logger = require("./logger.js");
