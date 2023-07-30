@@ -39,11 +39,6 @@
                     <h1 class="h3 mb-4 text-gray-800"><%= stats.username %>'s Stats</h1>
 
                     <!-- Platform Select -->
-
-
-                    <!--TODO: Make this only show played platforms -->
-
-
                     <div class="text-xs text-gray-800 text-uppercase mb-1">Platform</div>
                     <div class="mb-4 btn-group">
                         <a href="<%= stats.username %>" class="btn btn-primary <%= stats.stats.platform == 'all' ? 'disabled' : '' %>">
@@ -74,174 +69,42 @@
                         <% } %>
                     </div>
 
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Total Matches -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Total Matches</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.matches %></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Time Played -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Time Played</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= moment.duration(stats.stats.overall.minutesPlayed, 'minutes').format(" D[D], H[H], m[M]")  %></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Wins -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Wins</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.wins %></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-trophy fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Win Rate -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Win Rate</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.winRate %>%</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-medal fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Battle Pass Level -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Battle Pass Level
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mr-3 font-weight-bold text-gray-800"><%= stats.battlePass.level %></div>
-                                                </div>
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-3 mb-0">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                        style="width: <%= stats.battlePass.progress %>%" aria-valuenow="<%= stats.battlePass.progress %>" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-crown fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Kills -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Kills</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.kills %></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-person-falling-burst fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Deaths -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-danger shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Deaths</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.deaths %></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-skull-crossbones fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- KD -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                KD</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= stats.stats.overall.kd %></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-skull fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <%- include("../../includes/stats/big") %>
                   
                     <!-- Content Row -->
                     <div class="row">
 
+                        <!-- Content Column -->
+                        <% if (stats.stats.solo !== null) { %>
+                        <div class="col-12">
+                            <%- include("../../includes/stats/playlist", { playlistName: 'Solo', playlistStats: stats.stats.solo }) %>
+                        </div>
+                        <% } %>
+
+                        <% if (stats.stats.duo !== null) { %>
+                        <div class="col-12">
+                            <%- include("../../includes/stats/playlist", { playlistName: 'Duos', playlistStats: stats.stats.duo }) %>
+                        </div>
+                        <% } %>
+
+                        <% if (stats.stats.trio !== null) { %>
+                        <div class="col-12">
+                            <%- include("../../includes/stats/playlist", { playlistName: 'Trios', playlistStats: stats.stats.trio }) %>
+                        </div>
+                        <% } %>
+
+                        <% if (stats.stats.squad !== null) { %>
+                        <div class="col-12">
+                            <%- include("../../includes/stats/playlist", { playlistName: 'Squads', playlistStats: stats.stats.squad }) %>
+                        </div>
+                        <% } %>
+
+                        <% if (stats.stats.ltm !== null) { %>
+                        <div class="col-12">
+                            <%- include("../../includes/stats/playlist", { playlistName: 'LTM Modes', playlistStats: stats.stats.ltm }) %>
+                        </div>
+                        <% } %>
+    
                         <!-- Content Column -->
                         <div class="col-12">
 

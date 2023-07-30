@@ -36,11 +36,6 @@
                     <h1 class="h3 mb-4 text-gray-800"><%= fromEventText %><%= stats.username %><% if (!fromEvent) { %>'s Stats<% } %></h1>
 
                     <!-- Platform Select -->
-
-
-                    <!--TODO: Make this only show played platforms -->
-
-
                     <div class="text-xs text-gray-800 text-uppercase mb-1">Platform</div>
                     <div class="mb-4 btn-group">
                         <a href="<%= stats.username %>" class="btn btn-primary <%= stats.stats.platform == 'all' ? 'disabled' : '' %>">
@@ -76,8 +71,7 @@
                     <!-- Content Row -->
                     <div class="row">
                       
-                      <!-- Content Column -->
-
+                        <!-- Content Column -->
                         <% if (stats.stats.solo !== null) { %>
                         <div class="col-12">
                             <%- include("../../includes/stats/playlist", { playlistName: 'Solo', playlistStats: stats.stats.solo }) %>
