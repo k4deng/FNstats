@@ -128,3 +128,10 @@ dist
 
 # config
 config.js
+
+# replit files
+.replit
+replit.nix
+
+# vs code workspace
+.code-workspace
