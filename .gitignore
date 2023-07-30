@@ -134,4 +134,4 @@ config.js
 replit.nix
 
 # vs code workspace
-.code-workspace
+*.code-workspace
